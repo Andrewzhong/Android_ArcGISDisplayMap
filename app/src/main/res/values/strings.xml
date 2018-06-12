@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">哀牢山生态监测</string>
+    <string name="welcompage_Button">地图显示</string>
 </resources>

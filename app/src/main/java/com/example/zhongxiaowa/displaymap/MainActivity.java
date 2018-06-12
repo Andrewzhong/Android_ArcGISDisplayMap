@@ -1,32 +1,33 @@
 package com.example.zhongxiaowa.displaymap;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 
-import com.esri.arcgisruntime.mapping.ArcGISMap;
-import com.esri.arcgisruntime.mapping.Basemap;
-import com.esri.arcgisruntime.mapping.view.MapView;
 
 public class MainActivity extends AppCompatActivity {
-    private MapView mMapView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_welcomepage);
+        Button btn_Displaymap=(Button)findViewById(R.id.btn_Displaymap);
 
-        mMapView = findViewById(R.id.mapView);
-        ArcGISMap map = new ArcGISMap(Basemap.Type.NAVIGATION_VECTOR, 25.0647, 102.7541, 16);
-        mMapView.setMap(map);
-    }
-    //Basemap.Type.TOPOGRAPHIC
+        btn_Displaymap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,DisplayMap.class);
+                startActivity(intent);
 
-    @Override
-    protected void onPause(){
-        mMapView.pause(); super.onPause();
+            }
+        });
+
+
     }
 
-    @Override
-    protected void onResume(){
-        super.onResume(); mMapView.resume();
-    }
 }
